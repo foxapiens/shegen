@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shengen Arayüz Tasarımı</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="assets/icons/shegen_logo_dark.png" alt="SHEGEN Logo" class="logo">
+        </div>
+        <div class="menu-item" data-page="home">
+            <img src="assets/icons/folder.svg" alt="Home" class="icon">
+        </div>
+        <div class="menu-item" data-page="shortcut">
+            <img src="assets/icons/bolt.svg" alt="Shortcut" class="icon">
+        </div>
+        <div class="menu-item" data-page="about">
+            <img src="assets/icons/info.svg" alt="About" class="icon">
+        </div>
+        <div class="global-menu">
+            <img src="assets/icons/menu.svg" alt="Menu" class="icon">
+            <div class="menu-popup" id="menuPopup">
+                <div class="menu-item" id="saveSchemeBtn">Save Scheme</div>
+                <div class="menu-item" id="loadSchemeBtn">Load Scheme</div>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="home">
+        <div class="canvas-container">
+            <svg id="wires"></svg>
+            <div class="canvas" id="canvas"></div>
+            <div class="insert-button" id="insertButton">
+                <img src="assets/icons/add.svg" alt="Add" class="icon">
+            </div>
+            <div class="zoom-controls">
+                <button id="zoomOut" class="zoom-button">
+                    <img src="assets/icons/zoom-out.svg" alt="Zoom Out" class="icon">
+                </button>
+                <button id="zoomIn" class="zoom-button">
+                    <img src="assets/icons/zoom-in.svg" alt="Zoom In" class="icon">
+                </button>
+                <button id="fitScreen" class="zoom-button">
+                    <img src="assets/icons/fit-screen.svg" alt="Fit Screen" class="icon">
+                </button>
+                <span id="zoomLevel">100%</span>
+            </div>
+            <div class="tools-group">
+                <button id="magnetButton" class="tool-button">
+                    <img src="assets/icons/magneto.svg" alt="Magnet" class="icon">
+                </button>
+                <button id="layerButton" class="tool-button">
+                    <img src="assets/icons/layers.svg" alt="Layers" class="icon">
+                </button>
+            </div>
+            <div class="form-overlay" id="formOverlay">
+                <div class="form">
+                    <label for="boxTitle">Başlık:</label>
+                    <input type="text" id="boxTitle" placeholder="Başlık girin">
+                    <label for="boxDescription">Açıklama:</label>
+                    <textarea id="boxDescription" placeholder="Açıklama girin"></textarea>
+                    
+                    <label for="inputCount">Giriş Sayısı:</label>
+                    <input type="number" id="inputCount" min="0" value="0">
+                    <div id="inputPorts"></div>
+
+                    <label for="outputCount">Çıkış Sayısı:</label>
+                    <input type="number" id="outputCount" min="0" value="0">
+                    <div id="outputPorts"></div>
+                    <button id="addBoxButton">Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="select">
+        <div class="page"><h2>Select Sayfası</h2><p>Bu sayfa, seçim işlemleri için kullanılacak.</p></div>
+    </div>
+    <div class="content" id="shortcut">
+        <div class="shortcuts-container">
+            <h1>Keyboard Shortcuts</h1>
+            <div class="shortcuts-grid" id="shortcutsGrid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    <div class="content" id="about">
+        <div class="about-container">
+            <h1>About Shegen</h1>
+            <div class="about-grid">
+                <div class="about-section">
+                    <h2><i class="fas fa-info-circle"></i> Project Overview</h2>
+                    <div class="about-content">
+                        <span class="about-version">Version 1.0.0 (Prototype)</span>
+                        <p>Shegen is a visual programming interface designed to bridge the gap between natural language instructions and computational processes. It provides an intuitive visual environment for designing computational flows using SheLang, enabling users to create detailed instructional sequences for AI-driven systems.</p>
+                        <p>This prototype version demonstrates the core functionality of the platform, allowing users to create, connect, and manipulate nodes in a visual programming environment with real-time preview capabilities.</p>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <h2><i class="fas fa-code"></i> SheLang Framework</h2>
+                    <div class="about-content">
+                        <p>SheLang (Semantic Hierarchical Execution Language) is a domain-specific language designed for describing complex computational processes using a hierarchical structure. It allows for:</p>
+                        <ul>
+                            <li>Precise specification of computational workflows</li>
+                            <li>Hierarchical organization of tasks and subtasks</li>
+                            <li>Semantic representation of computational intent</li>
+                            <li>Integration with AI-driven execution environments</li>
+                        </ul>
+                        <p>The Shegen interface provides a visual representation of SheLang, making it accessible to users without extensive programming knowledge.</p>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <h2><i class="fas fa-user"></i> Developer</h2>
+                    <div class="about-content">
+                        <div class="about-profile">
+                            <div class="profile-image">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3>Enes</h3>
+                                <p>Lead Developer (foxapiens)</p>
+                                <div class="social-links">
+                                    <a href="https://github.com/foxapiens" title="GitHub"><i class="fab fa-github"></i></a>
+                                    <a href="https://x.com/foxapiens" title="X"><i class="fab fa-x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <p>This project was created to explore the potential of visual programming interfaces for advanced AI interactions. It aims to provide a more intuitive way to communicate complex computational workflows to AI systems.</p>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <h2><i class="fas fa-cogs"></i> Technical Features</h2>
+                    <div class="about-content">
+                        <ul>
+                            <li><strong>Interactive Canvas:</strong> Drag and drop interface for creating node-based workflows</li>
+                            <li><strong>Magnetic Connections:</strong> Smart port connections for intuitive node linking</li>
+                            <li><strong>Layer Management:</strong> Organize complex workflows with layering capabilities</li>
+                            <li><strong>SheLang Export:</strong> Generate SheLang code from visual representations</li>
+                            <li><strong>Responsive Design:</strong> Works across various screen sizes and devices</li>
+                            <li><strong>Keyboard Shortcuts:</strong> Productivity-enhancing shortcuts for power users</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="about-footer">
+                <p>© 2025 Shegen. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>

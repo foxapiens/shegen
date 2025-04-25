@@ -1,0 +1,33 @@
+.icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* Sidebar icons */
+.sidebar .menu-item .icon,
+.sidebar .global-menu .icon {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+}
+
+/* Button icons */
+.insert-button .icon,
+.scale-area button .icon,
+.magnet-button .icon,
+.layer-button .icon {
+    color: inherit;
+}
+
+.magnet-button.active .icon,
+.layer-button.active .icon {
+    color: white;
+}
+
+/* Delete button icon */
+.delete-button .icon {
+    width: 20px;
+    height: 20px;
+    color: red;
+} 

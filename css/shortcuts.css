@@ -1,0 +1,218 @@
+.shortcuts-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.shortcuts-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2.5rem;
+    font-size: 2.25rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.shortcuts-container h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #6610f2);
+    border-radius: 2px;
+}
+
+.shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.shortcut-category {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.shortcut-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.shortcut-category h2 {
+    color: #007bff;
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e9ecef;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.shortcut-category h2 i {
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.shortcut-category h2:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #007bff;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+}
+
+.shortcut-item:last-child {
+    border-bottom: none;
+}
+
+.shortcut-key {
+    background: #f2f2f2;
+    padding: 0.5rem 0.8rem;
+    border-radius: 30px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: #343a40;
+    display: inline-block;
+    min-width: 110px;
+    text-align: center;
+    box-shadow: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.shortcut-key:hover {
+    background: #e6e6e6;
+    color: #343a40;
+    transform: none;
+    box-shadow: none;
+    animation: none;
+    border: none;
+}
+
+.shortcut-description {
+    color: #495057;
+    flex: 1;
+    margin-left: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .shortcuts-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .shortcuts-container {
+        padding: 1.5rem;
+    }
+    
+    .shortcut-key {
+        min-width: 90px;
+        font-size: 0.85rem;
+    }
+    
+    .shortcut-description {
+        font-size: 0.9rem;
+    }
+    
+    .shortcuts-container h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
+}
+
+/* Make the content section properly sized */
+.content#shortcut {
+    overflow-y: auto;
+    background: #f5f7fa;
+    width: calc(100% - 60px);
+    height: 100%;
+}
+
+/* Hide the shortcuts container by default, shown only when the page is active */
+.content:not(.active) .shortcuts-container {
+    display: none;
+}
+
+/* Fixed width for shortcut keys to ensure alignment */
+.shortcut-key {
+    width: 160px;
+    min-width: 160px;
+}
+
+.shortcuts-search-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+}
+
+.shortcuts-search {
+    position: relative;
+    width: 100%;
+}
+
+.shortcuts-search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    font-size: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.shortcuts-search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 1px 4px rgba(0, 123, 255, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    opacity: 0.5;
+}
+
+.key-separator {
+    display: inline-block;
+    margin: 0 4px;
+    color: #6c757d;
+    font-size: 0.85em;
+    opacity: 0.7;
+} 

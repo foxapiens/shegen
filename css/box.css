@@ -1,0 +1,87 @@
+.box {
+    position: absolute;
+    width: 200px;
+    min-height: 100px;
+    background-color: #4285F4;
+    color: white;
+    border-radius: 5px;
+    user-select: none;
+    padding: 10px;
+    cursor: move;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+.description {
+    font-size: 12px;
+    margin-bottom: 10px;
+    word-break: break-word;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ports {
+    margin-top: 5px;
+}
+
+.port-row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.input-row {
+    justify-content: flex-start;
+}
+
+.output-row {
+    justify-content: flex-end;
+}
+
+.port {
+    width: 10px;
+    height: 10px;
+    background-color: #FFF;
+    border: 2px solid #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.port:hover {
+    background-color: #EFEFEF;
+}
+
+.port-name {
+    font-size: 12px;
+    margin: 0 5px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.port-type {
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin: 0 2px;
+}
+
+.port.connected {
+    background-color: #FFEB3B;
+}
+
+.port[data-type="input"].connected {
+    background-color: #4CAF50;
+}
+
+.port[data-type="output"].connected {
+    background-color: #FF9800;
+}

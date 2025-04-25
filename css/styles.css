@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Yan Çubuk (Sidebar) */
+.sidebar {
+    width: 60px;
+    background-color: #2D2D2D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #3A3A3A;
+    border-radius: 5px;
+}
+
+.sidebar .global-menu {
+    margin-top: auto;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3A3A3A;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* İçerik Alanı */
+.content {
+    flex: 1;
+    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+/* Canvas Alanı */
+.canvas-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.canvas {
+    background-image: linear-gradient(0deg, transparent 24px, #e0e0e0 25px, transparent 26px),
+                      linear-gradient(90deg, transparent 24px, #e0e0e0 25px, transparent 26px);
+    background-size: 25px 25px;
+    position: relative;
+    transform-origin: 0 0;
+    cursor: grab;
+}
+
+.canvas.dragging {
+    cursor: grabbing;
+}
+
+/* Kutucuklar */
+.box {
+    position: absolute;
+    width: 150px;
+    min-height: 100px;
+    color: white;
+    border-radius: 5px;
+    user-select: none;
+    padding: 10px;
+    cursor: move;
+}
+
+.box-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.box-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.box-ports {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-ports .inputs, .box-ports .outputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.port {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.port:hover {
+    background-color: #ddd;
+}
+
+/* Insert Butonu */
+.insert-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.insert-button:hover {
+    background-color: #0056b3;
+}
+
+/* Yakınlaştırma Çubuğu (ScaleArea) */
+.scale-area {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scale-area button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.scale-area button:hover {
+    background-color: #0056b3;
+}
+
+.scale-area span {
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+/* Mıknatıs Butonu */
+.magnet-button {
+    position: absolute;
+    bottom: 20px;
+    left: 150px;
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5;
+    color: #007BFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.magnet-button.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Katman Butonu */
+.layer-button {
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5;
+    color: #007BFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.layer-button.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Form */
+.form-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-overlay.active {
+    display: flex;
+}
+
+.form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form input, .form textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+/* Kablolar (SVG) */
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Diğer Sayfalar */
+.page {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Mevcut stiller aynı kalacak, sadece aşağıdakini ekliyoruz */
+
+/* Silme Butonu */
+.delete-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: red;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.delete-button.visible {
+    opacity: 1;
+}
+
+.delete-button:hover {
+    background-color: #f0f0f0;
+}
+
+.port.connected[data-type="input"] {
+    background-color: #FFFF00; /* Sarı - Bağlantı sonrası giriş */
+}
+
+.port.connected[data-type="output"] {
+    background-color: #FF0000; /* Kırmızı - Bağlantı sonrası çıkış */
+}
