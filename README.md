@@ -13,7 +13,7 @@ Shegen is a visual programming interface designed to bridge the gap between natu
 This prototype version demonstrates the core functionality of the platform, allowing users to create, connect, and manipulate nodes in a visual programming environment with real-time preview capabilities.
 
 <p align="center">
-  <img src="assets/icons/shegenv1.0.png" alt="Shegen Logo" width="150">
+  <img src="assets/icons/shegenv1.0.png" alt="Shegen">
 </p>
 
 ## SheLang Framework
