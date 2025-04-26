@@ -1,4 +1,4 @@
-# Shegen
+# SheGen
 
 <p align="center">
   <img src="assets/icons/shegen_logo_dark.png" alt="Shegen Logo" width="150">
